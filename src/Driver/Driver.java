@@ -1,9 +1,12 @@
 package Driver;
 
-public abstract class Driver {
-    String fullName;
-    boolean havingLicense;
-    int drivingExperience;
+import Transport.Transport;
+
+public abstract class Driver <T extends Transport> {
+    private String fullName;
+    private boolean havingLicense;
+    private int drivingExperience;
+    protected T drivenTransport;
 
     public Driver(String fullName, boolean havingLicense, int drivingExperience) {
         if (fullName != null && !fullName.isBlank()) {
@@ -29,6 +32,10 @@ public abstract class Driver {
         return drivingExperience;
     }
 
+    public T getDrivenTransport() {
+        return drivenTransport;
+    }
+
     public void setHavingLicense(boolean havingLicense) {
         this.havingLicense = havingLicense;
     }
@@ -38,6 +45,12 @@ public abstract class Driver {
             this.drivingExperience = drivingExperience;
         } else {
             this.drivingExperience = 0;
+        }
+    }
+
+    public void setDrivenTransport(T drivenTransport) {
+        if (drivenTransport != null) {
+            this.drivenTransport = drivenTransport;
         }
     }
 

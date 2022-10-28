@@ -1,9 +1,8 @@
 package Driver;
 
-import Transport.Competing;
 import Transport.Truck;
 
-public class DriverC<T extends Truck & Competing> extends Driver {
+public class DriverC extends Driver<Truck> {
 
     public DriverC(String fullName, boolean havingLicense, int drivingExperience) {
         super(fullName, havingLicense, drivingExperience);
@@ -11,12 +10,14 @@ public class DriverC<T extends Truck & Competing> extends Driver {
 
     @Override
     public void startDriving() {
-        System.out.println("Водитель " + getFullName() + " начинает движение на грузовике");
+        System.out.print("Водитель " + getFullName() + " начинает движение на грузовике. ");
+        drivenTransport.startDriving();
     }
 
     @Override
     public void stopDriving() {
-        System.out.println("Водитель " + getFullName() + " останавливает грузовик");
+        System.out.print("Водитель " + getFullName() + " останавливает грузовик. ");
+        drivenTransport.finishDriving();
     }
 
     @Override
@@ -24,7 +25,7 @@ public class DriverC<T extends Truck & Competing> extends Driver {
         System.out.println("Водитель " + getFullName() + " заправляет грузовик");
     }
 
-    public void drive(T truck) {
-        System.out.println("Водитель " + getFullName() + " управляет " + truck.getBrand() + " " + truck.getModel() + " и будет участвовать в заезде");
+    public void drive() {
+        System.out.println("Водитель " + getFullName() + " управляет " + drivenTransport.getBrand() + " " + drivenTransport.getModel() + " и будет участвовать в заезде");
     }
 }

@@ -28,12 +28,16 @@ public class Main {
         System.out.println(liaz);
         hyundai.maxSpeed();
 
-        DriverB<Car> denis = new DriverB<>("Жосан Денис Сергеевич", true, 8);
-        DriverC<Truck> dmitriy = new DriverC<>("Василенко Дмитрий Петрович", true, 6);
-        DriverD<Bus> nicolai = new DriverD<>("Ткаченко Николай Александрович", true, 12);
+        DriverB denis = new DriverB("Жосан Денис Сергеевич", true, 8);
+        DriverC dmitriy = new DriverC("Василенко Дмитрий Петрович", true, 6);
+        DriverD nicolai = new DriverD("Ткаченко Николай Александрович", true, 12);
 
-        denis.drive(subaru);
-        dmitriy.drive(ginaf);
-        nicolai.drive(man);
+        denis.setDrivenTransport(subaru);
+        denis.startDriving();
+        denis.drive();
+        dmitriy.setDrivenTransport(iveco);
+        dmitriy.drive();
+        nicolai.setDrivenTransport(man);
+        nicolai.drive();
     }
 }
